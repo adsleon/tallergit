@@ -17,8 +17,8 @@
 </head>
 <body>
     <div id="demo" v-cloak>
-        <h1>{{titulo}}</h1>
-        <input type="text" v-model="nuevoTexto" /><button @click="addTodo">Añadir</button>
+        <h1>{{titul}}</h1>
+        <input type="text" v-model="nuevoTexto" /><button @click="addtodo">Añadir</button>
         <p v-if="!todos.length">No hay trabajo pendiente :)</p>
         <ul>
             <li v-for="todo in todos"
@@ -42,7 +42,7 @@
           addTodo: function() {
             var newTodo = {
                 contenido: this.nuevoTexto,
-              hecho: false
+                hecho: false
             }
             this.todos.push(newTodo);
             
@@ -53,7 +53,7 @@
             
             var i;
             for (i=0; i<this.todos.length; i++) {
-                if (!this.todos[i].hecho) {
+                if (this.todos[i].hecho) {
                 newList.push(this.todos[i]);
               }
             }
