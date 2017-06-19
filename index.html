@@ -18,7 +18,7 @@
 <body>
     <div id="demo" v-cloak>
         <h1>{{titulo}}</h1>
-        <input type="text" v-model="nuevoTexto" /><button @click="addtodo">Añadir</button>
+        <input type="text" v-model="nuevoTexto" /><button @click="addTodo">Añadir</button>
         <p v-if="!todos.length">No hay trabajo pendiente :)</p>
         <ul>
             <li v-for="todo in todos"
