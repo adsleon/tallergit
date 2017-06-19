@@ -1,0 +1,67 @@
+<html>
+<head>
+    <title>Taller git ADS</title>
+
+    <style>
+    body {
+        font-family: Helvetica Neue, Arial, sans-serif;
+    }
+    li.hecho {
+        text-decoration: line-through;
+    }
+    [v-cloak] {
+        display: none;
+    }
+    </style>
+    <script src="https://vuejs.org/js/vue.min.js"></script>
+</head>
+<body>
+    <div id="demo" v-cloak>
+        <h1>{{titulo}}</h1>
+        <input type="text" v-model="nuevoTexto" /><button @click="addTodo">Añadir</button>
+        <p v-if="!todos.length">No hay trabajo pendiente :)</p>
+        <ul>
+            <li v-for="todo in todos"
+                :class="{ hecho: todo.hecho }"
+                @click="todo.hecho = !todo.hecho">
+                {{ todo.contenido }}
+            </li>
+        </ul>
+        <button v-if="todos.length" @click="deleteDone">Eliminar trabajos finalizados</button>
+    </div>
+
+    <script>
+    var demo = new Vue({
+        el: '#demo',
+        data: {
+            titulo: 'Taller git ADS',
+            todos: [],
+            nuevoTexto: ""
+        },
+        methods: {
+          addTodo: function() {
+            var newTodo = {
+                contenido: this.nuevoTexto,
+              hecho: false
+            }
+            this.todos.push(newTodo);
+            
+            this.nuevoTexto = "";
+          },
+          deleteDone: function() {
+            var newList = [];
+            
+            var i;
+            for (i=0; i<this.todos.length; i++) {
+                if (!this.todos[i].hecho) {
+                newList.push(this.todos[i]);
+              }
+            }
+            
+            this.todos = newList;
+          }
+        }
+    })
+    </script>
+</body>
+</html>
